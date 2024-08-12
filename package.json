@@ -7,7 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "pnpm --filter @xmk-ui/play dev",
     "docs:dev": "pnpm --filter @xmk-ui/docs dev",
-    "docs:build": "pnpm --filter @xmk-ui/docs build"
+    "docs:build": "pnpm --filter @xmk-ui/docs build",
+    "build-hooks": "cross-env NODE_ENV=production pnpm --filter @xmk-ui/hooks build",
+    "build": "run-s build-hooks build-components",
+    "build-components": "cross-env NODE_ENV=production pnpm --filter xmk-ui build"
   },
   "keywords": [],
   "author": "",
