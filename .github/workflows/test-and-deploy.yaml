@@ -21,6 +21,7 @@ jobs:
         run: npm install -g pnpm
 
       - name: Install dependencies
+        # npm ci
         run: pnpm install --frozen-lockfile
 
       - name: Build hooks
