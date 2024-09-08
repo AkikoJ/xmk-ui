@@ -1,4 +1,5 @@
-import { XmkButton } from '@xmk-ui/components'
-import type { Plugin } from 'vue'
+import {XmkButton, XmkIcon} from '@xmk-ui/components'
 
-export default [XmkButton] as Plugin[]
+import type {Plugin} from 'vue'
+
+export default [XmkButton, XmkIcon] as Plugin[]

@@ -13,7 +13,7 @@ a {
   color: var(--xmk-color-primary);
   text-decoration: none;
 
-  &:hovxmk,
+  &:hover,
   &:focus {
     color: var(--xmk-color-primary-light-3);
   }
@@ -30,7 +30,7 @@ h4,
 h5,
 h6 {
   color: var(--xmk-text-color-regular);
-  font-weight: inhxmkit;
+  font-weight: inherit;
 
   &:first-child {
     margin-top: 0;
@@ -57,7 +57,7 @@ h4,
 h5,
 h6,
 p {
-  font-size: inhxmkit;
+  font-size: inherit;
 }
 
 p {
@@ -84,6 +84,6 @@ small {
 hr {
   margin-top: 20px;
   margin-bottom: 20px;
-  bordxmk: 0;
-  bordxmk-top: 1px solid var(--xmk-bordxmk-color-lightxmk);
+  border: 0;
+  border-top: 1px solid var(--xmk-border-color-lighter);
 }

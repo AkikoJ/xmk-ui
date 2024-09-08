@@ -1,1 +1,65 @@
 @import './reset.css';
+:root {
+  /* colors */
+  --xmk-color-white: #ffffff;
+  --xmk-color-black: #000000;
+  --colors: (primary: #409eff, success: #67c23a, warning: #e6a23c, danger: #f56c6c, info: #909399);
+  --xmk-bg-color: #ffffff;
+  --xmk-bg-color-page: #f2f3f5;
+  --xmk-bg-color-overlay: #ffffff;
+  --xmk-text-color-primary: #303133;
+  --xmk-text-color-regular: #606266;
+  --xmk-text-color-secondary: #909399;
+  --xmk-text-color-placeholder: #a8abb2;
+  --xmk-text-color-disabled: #c0c4cc;
+  --xmk-border-color: #dcdfe6;
+  --xmk-border-color-light: #e4e7ed;
+  --xmk-border-color-lighter: #ebeef5;
+  --xmk-border-color-extra-light: #f2f6fc;
+  --xmk-border-color-dark: #d4d7de;
+  --xmk-border-color-darker: #cdd0d6;
+  --xmk-fill-color: #f0f2f5;
+  --xmk-fill-color-light: #f5f7fa;
+  --xmk-fill-color-lighter: #fafafa;
+  --xmk-fill-color-extra-light: #fafcff;
+  --xmk-fill-color-dark: #ebedf0;
+  --xmk-fill-color-darker: #e6e8eb;
+  --xmk-fill-color-blank: #ffffff;
+
+  @each $val, $color in var(--colors) {
+    --xmk-color-$(val): $(color);
+    @for $i from 3 to 9 {
+      --xmk-color-$(val)-light-$(i): mix(#fff, $(color), 0$ (i));
+    }
+    --xmk-color-$(val)-dark-2: mix(#000, $(color), 0.2);
+  }
+
+  /* border */
+  --xmk-border-width: 1px;
+  --xmk-border-style: solid;
+  --xmk-border-color-hover: var(--xmk-text-color-disabled);
+  --xmk-border: var(--xmk-border-width) var(--xmk-border-style) var(--xmk-border-color);
+  --xmk-border-radius-base: 4px;
+  --xmk-border-radius-small: 2px;
+  --xmk-border-radius-round: 20px;
+  --xmk-border-radius-circle: 100%;
+
+  /*font*/
+  --xmk-font-size-extra-large: 20px;
+  --xmk-font-size-large: 18px;
+  --xmk-font-size-medium: 16px;
+  --xmk-font-size-base: 14px;
+  --xmk-font-size-small: 13px;
+  --xmk-font-size-extra-small: 12px;
+  --xmk-font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', '\5fae\8f6f\96c5\9ed1', Arial, sans-serif;
+  --xmk-font-weight-primary: 500;
+
+  /*disabled*/
+  --xmk-disabled-bg-color: var(--xmk-fill-color-light);
+  --xmk-disabled-text-color: var(--xmk-text-color-placeholder);
+  --xmk-disabled-border-color: var(--xmk-border-color-light);
+
+  /*animation*/
+  --xmk-transition-duration: 0.4s;
+  --xmk-transition-duration-fast: 0.2s;
+}
