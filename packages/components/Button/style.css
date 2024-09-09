@@ -1,6 +1,7 @@
 .xmk-button-group {
   --xmk-button-group-border-color: var(--xmk-border-color-lighter);
 }
+
 .xmk-button {
   --xmk-button-font-weight: var(--xmk-font-weight-primary);
   --xmk-button-border-color: var(--xmk-border-color);
@@ -42,9 +43,11 @@
   padding: 8px 15px;
   font-size: var(--xmk-font-size-base);
   border-radius: var(--xmk-border-radius-base);
-  & + & {
+
+  &+& {
     margin-left: 12px;
   }
+
   &:hover,
   &:focus {
     color: var(--xmk-button-hover-text-color);
@@ -52,27 +55,32 @@
     background-color: var(--xmk-button-hover-bg-color);
     outline: none;
   }
+
   &:active {
     color: var(--xmk-button-active-text-color);
     border-color: var(--xmk-button-active-border-color);
     background-color: var(--xmk-button-active-bg-color);
     outline: none;
   }
+
   /*plain*/
   &.is-plain {
     --xmk-button-hover-text-color: var(--xmk-color-primary);
     --xmk-button-hover-bg-color: var(--xmk-fill-color-blank);
     --xmk-button-hover-border-color: var(--xmk-color-primary);
   }
+
   /*round*/
   &.is-round {
     border-radius: var(--xmk-border-radius-round);
   }
+
   /*circle*/
   &.is-circle {
     border-radius: 50%;
     padding: 8px;
   }
+
   /*disabled*/
   &.is-loading,
   &.is-disabled,
@@ -87,12 +95,18 @@
     background-color: var(--xmk-button-disabled-bg-color);
     border-color: var(--xmk-button-disabled-border-color);
   }
+
   [class*='er-icon'] {
     width: 1em;
     height: 1em;
   }
 }
-@each $val in primary, success, warning, info, danger {
+
+@each $val in primary,
+success,
+warning,
+info,
+danger {
   .xmk-button--$(val) {
     --xmk-button-text-color: var(--xmk-color-white);
     --xmk-button-bg-color: var(--xmk-color-$(val));
@@ -108,6 +122,7 @@
     --xmk-button-disabled-bg-color: var(--xmk-color-$(val)-light-5);
     --xmk-button-disabled-border-color: var(--xmk-color-$(val)-light-5);
   }
+
   .xmk-button--$(val).is-plain {
     --xmk-button-text-color: var(--xmk-color-$(val));
     --xmk-button-bg-color: var(--xmk-color-$(val)-light-9);
@@ -122,29 +137,34 @@
     --xmk-button-disabled-border-color: var(--xmk-color-$(val)-light-8);
   }
 }
+
 .xmk-button--large {
   --xmk-button-size: 40px;
   height: var(--xmk-button-size);
   padding: 12px 19px;
   font-size: var(--xmk-font-size-base);
   border-radius: var(--xmk-border-radius-base);
+
   /*circle*/
   &.is-circle {
     border-radius: 50%;
     padding: 12px;
   }
 }
+
 .xmk-button--small {
   --xmk-button-size: 24px;
   height: var(--xmk-button-size);
   padding: 5px 11px;
   font-size: 12px;
   border-radius: calc(var(--xmk-border-radius-base) - 1px);
+
   /*circle*/
   &.is-circle {
     border-radius: 50%;
     padding: 5px;
   }
+
   [class*='er-icon'] {
     width: 12px;
     height: 12px;
@@ -158,29 +178,35 @@
   &::after {
     clear: both;
   }
-  & > :deep(.xmk-button) {
+
+  &> :deep(.xmk-button) {
     float: left;
     position: relative;
     margin-left: 0;
+
     &:first-child {
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
       border-right-color: var(--xmk-button-group-border-color);
     }
+
     &:last-child {
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;
       border-left-color: var(--xmk-button-group-border-color);
     }
+
     &:not(:first-child):not(:last-child) {
       border-radius: 0;
 
       border-left-color: var(--xmk-button-group-border-color);
       border-right-color: var(--xmk-button-group-border-color);
     }
+
     &:not(:last-child) {
       margin-right: -1px;
     }
+
     &:first-child:last-child {
       border-top-right-radius: var(--xmk-border-radius-base);
       border-bottom-right-radius: var(--xmk-border-radius-base);

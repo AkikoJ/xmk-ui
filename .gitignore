@@ -30,4 +30,5 @@ packages/docs/.vitepress/cache
 *.njsproj
 *.sln
 *.sw?
+.history/
 

@@ -1,4 +1,5 @@
 @import './reset.css';
+
 :root {
   /* colors */
   --xmk-color-white: #ffffff;
@@ -26,11 +27,14 @@
   --xmk-fill-color-darker: #e6e8eb;
   --xmk-fill-color-blank: #ffffff;
 
-  @each $val, $color in var(--colors) {
+  @each $val,
+  $color in var(--colors) {
     --xmk-color-$(val): $(color);
+
     @for $i from 3 to 9 {
       --xmk-color-$(val)-light-$(i): mix(#fff, $(color), 0.$(i));
     }
+
     --xmk-color-$(val)-dark-2: mix(#000, $(color), 0.2);
   }
 
@@ -51,7 +55,14 @@
   --xmk-font-size-base: 14px;
   --xmk-font-size-small: 13px;
   --xmk-font-size-extra-small: 12px;
-  --xmk-font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', '\5fae\8f6f\96c5\9ed1', Arial, sans-serif;
+  --xmk-font-family: 'Helvetica Neue',
+  Helvetica,
+  'PingFang SC',
+  'Hiragino Sans GB',
+  'Microsoft YaHei',
+  '\5fae\8f6f\96c5\9ed1',
+  Arial,
+  sans-serif;
   --xmk-font-weight-primary: 500;
 
   /*disabled*/
