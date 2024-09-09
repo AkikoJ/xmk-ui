@@ -29,7 +29,7 @@
   @each $val, $color in var(--colors) {
     --xmk-color-$(val): $(color);
     @for $i from 3 to 9 {
-      --xmk-color-$(val)-light-$(i): mix(#fff, $(color), 0$ (i));
+      --xmk-color-$(val)-light-$(i): mix(#fff, $(color), 0.$(i));
     }
     --xmk-color-$(val)-dark-2: mix(#000, $(color), 0.2);
   }
