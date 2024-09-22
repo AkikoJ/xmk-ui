@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import type {ButtonProps, ButtonEmits, ButtonInstace} from './types'
 import {throttle} from 'lodash-es'
-import {ref, computed} from 'vue'
+import {ref, computed, inject} from 'vue'
 import XmkIcon from '../Icon/Icon.vue'
+import {BUTTON_GROUP_CTX_KEY} from './contants'
+
 defineOptions({
   name: 'xmkButton'
 })
@@ -18,6 +20,10 @@ const emits = defineEmits<ButtonEmits>()
 const slots = defineSlots()
 
 const _ref = ref<HTMLButtonElement>()
+const ctx = inject(BUTTON_GROUP_CTX_KEY, void 0)
+const type = computed(() => ctx?.type ?? props?.type ?? '')
+const size = computed(() => ctx?.size ?? props?.size ?? '')
+const disabled = computed(() => ctx?.disabled || props?.disabled || false)
 const iconStyle = computed(() => ({marginRight: slots.default ? '6px' : 0}))
 const handleBtnClick = (e: MouseEvent) => emits('click', e)
 
