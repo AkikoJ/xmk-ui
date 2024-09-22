@@ -21,7 +21,8 @@ const _ref = ref<HTMLButtonElement>()
 const iconStyle = computed(() => ({marginRight: slots.default ? '6px' : 0}))
 const handleBtnClick = (e: MouseEvent) => emits('click', e)
 
-const handlBtneCLickThrottle = throttle(handleBtnClick, props.throttleDuration)
+// trailing：在时间结束后是否执行最后一次事件
+const handlBtneCLickThrottle = throttle(handleBtnClick, props.throttleDuration, {trailing: false})
 
 defineExpose<ButtonInstace>({
   ref: _ref

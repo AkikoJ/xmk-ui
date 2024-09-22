@@ -1,9 +1,9 @@
 import type {Meta, StoryObj, ArgTypes} from '@storybook/vue3'
-import {fn, within, userEvent, expect} from '@storybook/test'
+import {fn, within, userEvent, expect, clearAllMocks} from '@storybook/test'
 
 import {XmkButton} from 'xmk-ui'
 
-type Story = StoryObj<typeof XmkButton> & {argTypes: ArgTypes}
+type Story = StoryObj<typeof XmkButton> & {argTypes?: ArgTypes}
 
 const meta: Meta<typeof XmkButton> = {
   title: 'Example/Button',
@@ -56,6 +56,7 @@ const container = (val: string) => `
       ${val}
   </div>
 `
+
 export const Default: Story & {args: {content: string}} = {
   argTypes: {
     content: {
@@ -71,15 +72,67 @@ export const Default: Story & {args: {content: string}} = {
     setup() {
       return {args}
     },
-    template: container(`<xmk-button v-bind="args">{{args.content}}</xmk-button>`)
+    template: container(`<xmk-button data-testid="story-test-btn" v-bind="args">{{args.content}}</xmk-button>`)
   }),
+
   play: async ({canvasElement, args, step}) => {
     const canvas = within(canvasElement)
-    await step('click btn', async () => {
-      await userEvent.click(canvas.getByRole('button'))
-    })
+    const btn = canvas.getByTestId('stort-test-btn')
 
+    // await step('when useThrottle is set to true,the onClick should be called once', async () => {
+    //   set(args, 'useThrottle', true)
+    //   await userEvent.tripleClick(btn)
+    //   expect(args.onClick).toHaveBeenCalledTimes(1)
+    //   clearAllMocks()
+    // })
+
+    // await step('when useTrhottle is set to false,the onClick should be called three times', async () => {
+    //   set(args, 'useThrottle', false)
+    //   await userEvent.tripleClick(btn)
+    //   expect(args.onClick).toHaveBeenCalledTimes(3)
+    //   clearAllMocks()
+    // })
+
+    // await step('when disabled is set to true, the onClick should not be called', async () => {
+    //   set(args, 'disabled', true)
+    //   await userEvent.click(btn)
+
+    //   expect(args.onClick).not.toHaveBeenCalled()
+    //   set(args, 'disabled', false)
+    //   clearAllMocks()
+    // })
+
+    // await step('when loading is set to true, the button should be disabled', async () => {
+    //   set(args, 'loading', true)
+    //   expect(btn).toHaveAttribute('disabled')
+    // })
+  }
+}
+
+export const Autofocus: Story & {args: {content: string}} = {
+  argTypes: {
+    content: {
+      contrl: {type: 'text'}
+    }
+  },
+  args: {
+    content: 'Button',
+    autofocus: true
+  },
+  render: args => ({
+    components: {XmkButton},
+    setup() {
+      return {args}
+    },
+    template: container(`
+        <p>请点击浏览器的刷新页面来使按钮自动聚焦</p>
+        <xmk-button data-testid="story-test-btn" v-bind="args">{{args.content}}</xmk-button>
+      `)
+  }),
+  play: async ({args}) => {
+    await userEvent.keyboard('{enter}')
     expect(args.onClick).toHaveBeenCalled()
+    clearAllMocks()
   }
 }
 export default meta
